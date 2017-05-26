@@ -9,6 +9,8 @@ var htmlbeautify = require('gulp-html-beautify');
 var gulp_file_include = require('gulp-file-include');
 var browser_sync = require('browser-sync').create();
 
+var sourcemaps = require('gulp-sourcemaps');
+
 // SYNC html
 gulp.task('include-html', function(){
     var options = {
@@ -28,8 +30,10 @@ gulp.task('include-html', function(){
 // SYNC sass
 gulp.task('sass', function(){
     gulp.src(['./sass/*.scss'])
+    .pipe(sourcemaps.init())
     .pipe(sass())
-    // .pipe(cssmin())
+    .pipe(cssmin())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./public/theme/css'))
     .pipe(browser_sync.stream());
 });
@@ -39,6 +43,9 @@ gulp.task('js', function(){
     gulp.src([
         './theme/js/*.js'
     ])
+    .pipe(sourcemaps.init())
+    .pipe(jsmin())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./public/theme/js'));
 });
 

@@ -46,6 +46,7 @@
     "gulp-html-beautify": "^1.0.1",
     "gulp-jsmin": "^0.1.5",
     "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
     "jquery": "^1.9.1",
     "perfect-scrollbar": "^0.7.0"
   },
